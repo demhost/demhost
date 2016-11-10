@@ -11,6 +11,9 @@ class ServiceProvider extends LServiceProvider {
             include __DIR__ . '/routes/web.php';
         }
 
+        //Указывам где искать вью и какой неймспейс им задать
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'safenote');
+
     }
 
     public function register()
