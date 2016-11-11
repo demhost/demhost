@@ -1,25 +1,14 @@
 <?php
 
-
 Route::group([
-	'prefix'=>'safenote',
-	'namespace' => 'Deminua\Safenote\Http\Controllers',
-	'middleware' => ['web', 'auth']
+		'prefix'=>'safenote',
+		'namespace' => 'Deminua\Safenote\Http\Controllers',
+		'middleware' => ['web', 'auth'],
+		'as'=>'safenote::',
 	], function() {
 
-	#Route::resource('/', 'SafenController', ['except' => ['create', 'store', 'update', 'destroy']]);
-	Route::get('create', 'SafenController@create');
-	Route::get('show/{id}', 'SafenController@show');
-	/*
-	Route::get('/', 'SafenController@index');
-	Route::get('create', 'SafenController@index');
-    Route::get('show/{data?}', 'SafenController@test');
-    Route::get('list', 'SafenController@list');
-    */
-
+	Route::get('create', 'SafenController@create')->name('create');
+	Route::get('show/{id}', 'SafenController@show')->name('show');
+	Route::post('create', 'SafenController@store')->name('store');
+	Route::post('store', 'SafenController@store')->name('store');
 });
-
-
-// Route::get('/safe-note/{data?}', function ($data) {
-// 	return view('safenote::index', compact('data'));
-// });

@@ -18,7 +18,12 @@ class CreateSafensTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
+        });
+
+        Schema::create('safengables', function (Blueprint $table) {
+            $table->increments('safen_id');
+            $table->morphs('safengable');
         });
     }
 
@@ -30,5 +35,6 @@ class CreateSafensTable extends Migration
     public function down()
     {
         Schema::dropIfExists('safens');
+        Schema::dropIfExists('safengables');
     }
 }

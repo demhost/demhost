@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider as LServiceProvider;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class ServiceProvider extends LServiceProvider {
 
@@ -14,8 +15,14 @@ class ServiceProvider extends LServiceProvider {
     //     'Html' => 'Collective\Html\HtmlFacade',
     // ];
 
+
+
     public function boot()
     {   
+
+        Relation::morphMap([
+            'safenlogin' => SafenLogin::class,
+        ]);
 
         $this->publishes([__DIR__ . '/config/' => config_path() . "/"], 'config');
 
@@ -28,6 +35,8 @@ class ServiceProvider extends LServiceProvider {
 
         //Указывам где искать вью и какой неймспейс им задать
         $this->loadViewsFrom(__DIR__.'/resources/views', 'safen');
+
+
 
     }
 

@@ -17,8 +17,8 @@ class CreateSafenLoginsTable extends Migration
             $table->increments('id');
             $table->string('address');
             $table->string('port')->default('80');
-            $table->string('login');
-            $table->string('pass');
+            $table->string('login')->nullable();
+            $table->string('pass')->nullable();
         });
     }
 
