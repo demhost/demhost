@@ -1,4 +1,4 @@
-<?php namespace Deminua\SafeNote;
+<?php namespace Deminua\Safenote;
 
 use Illuminate\Support\ServiceProvider as LServiceProvider;
 
